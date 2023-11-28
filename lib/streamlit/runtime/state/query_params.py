@@ -99,6 +99,8 @@ class QueryParams(MutableMapping[str, str]):
 
     def to_dict(self) -> Dict[str, str]:
         self._ensure_single_query_api_used()
+        
+        # return the last query param if multiple keys are set
         return {key: self[key] for key in self._query_params}
 
     def set_with_no_forward_msg(self, key: str, val: Union[List[str], str]) -> None:
